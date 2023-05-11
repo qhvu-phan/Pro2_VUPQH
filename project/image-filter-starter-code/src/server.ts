@@ -30,15 +30,6 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   /**************************************************************************** */
 
   //! END @TODO1
-  app.get("/filteredimage", async (requests:express.Request, response:express.Response) => {
-    try {
-      const { image_url : imageURL } = requests.query;
-      const uploadFile = await filterImageFromURL(imageURL);
-      response.status(200).sendFile(uploadFile, () =>  deleteLocalFiles([uploadFile]));
-    } catch(e) {
-      return response.status(404).send({ message: 'Image URL not found' });
-    }
-  });
   
   // Root Endpoint
   // Displays a simple message to the user
